@@ -1,0 +1,119 @@
+set cut_paste_input [stack 0]
+version 10.5 v7
+push $cut_paste_input
+ColorCorrect {
+gamma 0.9
+gain 1.2
+name ColorCorrect4
+gl_color 0xff32cf00
+note_font 微软雅黑
+selected true
+xpos 0
+ypos -3986
+}
+RolloffContrast {
+channels rgb
+contrast 2
+center 0.001
+soft_clip 1
+slope_mag_low1 0.1999999881
+slope_mag_high2 0.1999999881
+name RolloffContrast4
+gl_color 0xe132ff00
+note_font 微软雅黑
+selected true
+xpos 0
+ypos -3954
+}
+set Nc75e400 [stack 0]
+PositionKeyer {
+name PositionKeyer2
+gl_color 0x32ff4e00
+label 远处
+note_font 微软雅黑
+selected true
+xpos 90
+ypos -3922
+in depth
+sampler 1
+p0 {942 204}
+p1 {1496 218}
+blackpoint {0.1661376953 0.1661376953 0.1661376953}
+whitepoint {0.564453125 0.564453125 0.564453125}
+output rgba.alpha
+g_presets 1
+__initiated true
+}
+set N4c94d700 [stack 0]
+push $N4c94d700
+push $Nc75e400
+ColorCorrect {
+inputs 1+1
+gamma 1.4
+gain 0.3
+name ColorCorrect6
+gl_color 0x32ffbf00
+note_font 微软雅黑
+selected true
+xpos 0
+ypos -3858
+}
+Grade {
+inputs 1+1
+black 0.02
+name Grade2
+gl_color 0xff329500
+label 雾
+note_font 微软雅黑
+selected true
+xpos 0
+ypos -3826
+}
+set Nff77a400 [stack 0]
+PositionKeyer {
+name PositionKeyer3
+gl_color 0xa7ff3200
+label 近处
+note_font 微软雅黑
+selected true
+xpos 90
+ypos -3778
+in depth
+sampler 1
+p0 {444 274}
+p1 {1070 60}
+blackpoint {0.2224121094 0.2224121094 0.2224121094}
+whitepoint {0.1563529968 0.1563529968 0.1563529968}
+output rgba.alpha
+g_presets 1
+__initiated true
+}
+set N4c94c300 [stack 0]
+push $N4c94c300
+push $Nff77a400
+ColorCorrect {
+inputs 1+1
+gamma 0.8
+gain 1.4
+name ColorCorrect8
+gl_color 0x326cff00
+note_font 微软雅黑
+selected true
+xpos 0
+ypos -3714
+}
+RolloffContrast {
+inputs 1+1
+channels rgb
+contrast 2
+center 0.001
+soft_clip 1
+slope_mag_low1 0.1999999881
+slope_mag_high2 0.1999999881
+name RolloffContrast6
+gl_color 0xffae3200
+note_font 微软雅黑
+selected true
+xpos 0
+ypos -3682
+}

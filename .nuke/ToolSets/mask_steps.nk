@@ -1,0 +1,53 @@
+set cut_paste_input [stack 0]
+version 10.5 v7
+push $cut_paste_input
+Dot {
+name Dot3
+gl_color 0x323bff00
+note_font 微软雅黑
+selected true
+xpos 789
+ypos -3199
+}
+set N9099e400 [stack 0]
+add_layer {P P.red P.green P.blue}
+PositionKeyer {
+name PositionKeyer1
+gl_color 0xeaff3200
+note_font 微软雅黑
+selected true
+xpos 849
+ypos -3177
+in P
+sampler 1
+p0 {784 740}
+p1 {1382 562}
+mode Distance(距离)
+blackpoint {-285.5 987 3204}
+whitepoint {-2.095703125 888 3212}
+output rgba.alpha
+g_presets 1
+__initiated true
+}
+Grade {
+channels alpha
+whitepoint 0.1
+name Grade3
+gl_color 0xfc32ff00
+note_font 微软雅黑
+selected true
+xpos 849
+ypos -3133
+}
+push $N9099e400
+add_layer {mask_extra mask_extra.steps}
+Copy {
+inputs 2
+from0 rgba.alpha
+to0 mask_extra.steps
+name Copy1
+gl_color 0xff923200
+selected true
+xpos 755
+ypos -3081
+}

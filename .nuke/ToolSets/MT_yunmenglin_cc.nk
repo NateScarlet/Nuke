@@ -1,0 +1,154 @@
+set cut_paste_input [stack 0]
+version 10.5 v7
+push $cut_paste_input
+add_layer {plants plants.green_plant plants.purple_plant plants.white_plant plants.blue_plant plants.blue_grass plants.all}
+ColorCorrect {
+ saturation 0.9
+ gain {0.8199999928 1 1.180000067 1}
+ shadows.gain 0.2
+ lookup {shadow {curve 1 s0 x0.2099562138 0 s0}
+   midtone {1-shadow-highlight}
+   highlight {}}
+ maskChannelInput plants.all
+ inject true
+ name 植物底部压暗
+ gl_color 0x32ffdb00
+ note_font 微软雅黑
+ selected true
+ xpos -218
+ ypos -4796
+}
+ColorCorrect {
+ saturation 0.82
+ gain 0.68
+ maskChannelInput plants.green_plant
+ name ColorCorrect54
+ gl_color 0xff323400
+ note_font 微软雅黑
+ selected true
+ xpos -218
+ ypos -4715
+}
+ColorCorrect {
+ shadows.gain 0.49
+ maskChannelInput plants.blue_grass
+ name 蓝草
+ gl_color 0xeb32ff00
+ note_font 微软雅黑
+ selected true
+ xpos -218
+ ypos -4671
+}
+set N494c3000 [stack 0]
+push $N494c3000
+Keyer {
+ operation "luminance key"
+ range {0.08790182066 0.1002247418 1 1}
+ name Keyer11
+ gl_color 0x32ffa200
+ note_font 微软雅黑
+ selected true
+ xpos -104
+ ypos -4658
+}
+Merge2 {
+ inputs 2
+ operation mask
+ Achannels {rgba.red rgba.green rgba.blue plants.blue_grass}
+ name Merge54
+ gl_color 0xffd73200
+ note_font 微软雅黑
+ selected true
+ xpos -117
+ ypos -4593
+}
+push $N494c3000
+ColorCorrect {
+ inputs 1+1
+ gamma 1.3
+ gain 1.2
+ name ColorCorrect28
+ gl_color 0x324bff00
+ note_font 微软雅黑
+ selected true
+ xpos -227
+ ypos -4593
+}
+Grade {
+ whitepoint {0.08853002638 0.07773887366 0.2786575258 1}
+ white {0.2039470524 0.04701152071 0.5208595395 1}
+ multiply 0.6
+ maskChannelInput plants.purple_plant
+ mix 0.6
+ name Grade1
+ gl_color 0xfa32ff00
+ note_font 微软雅黑
+ selected true
+ xpos -227
+ ypos -4565
+}
+Grade {
+ whitepoint {0.03820844367 0.03676955774 0.2009291649 1}
+ white {0.04863058031 0.09517900646 0.4885160029 1}
+ multiply 0.7
+ maskChannelInput plants.blue_grass
+ mix 0.6
+ name Grade2
+ gl_color 0xff32db00
+ note_font 微软雅黑
+ selected true
+ xpos -227
+ ypos -4521
+}
+set N49525c00 [stack 0]
+push $N49525c00
+PositionKeyer {
+ name PositionKeyer1
+ gl_color 0x32ffae00
+ note_font 微软雅黑
+ selected true
+ xpos -89
+ ypos -4489
+ in depth
+ sampler 1
+ p0 {758 208}
+ p1 {1596 1056}
+ blackpoint {0.01178741455 0.01178741455 0.01178741455}
+ whitepoint {0.01844787598 0.01844787598 0.01844787598}
+ output rgba.alpha
+ g_presets 1
+ __initiated true
+}
+Merge2 {
+ inputs 2
+ operation mask
+ Achannels {rgba.red rgba.green rgba.blue plants.all}
+ name Merge33
+ gl_color 0x32c3ff00
+ note_font 微软雅黑
+ selected true
+ xpos -147
+ ypos -4465
+}
+push $N49525c00
+ColorCorrect {
+ inputs 1+1
+ gain 0.7
+ name ColorCorrect7
+ gl_color 0xa5ff3200
+ note_font 微软雅黑
+ selected true
+ xpos -231
+ ypos -4454
+}
+Multiply {
+ channels {none none none mask.a}
+ value 0.5
+ maskChannelInput plants.blue_grass
+ name Multiply12
+ gl_color 0xd1ff3200
+ note_font 微软雅黑
+ selected true
+ xpos -231
+ ypos -4407
+}

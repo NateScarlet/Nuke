@@ -1,0 +1,88 @@
+set cut_paste_input [stack 0]
+version 10.5 v7
+push $cut_paste_input
+Group {
+ name InfNanReplace
+ gl_color 0xeaff3200
+ note_font 微软雅黑
+ selected true
+ xpos 1428
+ ypos -1271
+ addUserKnob {20 tab l "InfNanReplace v0.1.1"}
+ addUserKnob {41 in l "in 1" T Shuffle2.in}
+ addUserKnob {7 nan R -1e+008 0}
+ addUserKnob {7 inf R 1 1e+008}
+ inf 1
+}
+ Input {
+  inputs 0
+  name Input
+  gl_color 0xff6f3200
+  xpos 70
+  ypos -202
+ }
+set N2d024800 [stack 0]
+push $N2d024800
+ Shuffle {
+  name Shuffle2
+  gl_color 0x32c7ff00
+  note_font 微软雅黑
+  xpos 180
+  ypos -163
+ }
+ Expression {
+  temp_name0 repl
+  temp_expr0 parent.inf
+  expr0 "(r == inf) ? repl : ( r == -inf ) ? -repl : r "
+  expr1 "(g == inf) ? repl : ( g == -inf ) ? -repl : g "
+  expr2 "(b == inf) ? repl : ( b == -inf ) ? -repl : b"
+  expr3 "(a == inf) ? repl : ( a == -inf ) ? -repl : a"
+  name Expression1
+  gl_color 0x3242ff00
+  note_font 微软雅黑
+  xpos 180
+  ypos -107
+ }
+ Expression {
+  temp_name0 repl
+  temp_expr0 parent.nan
+  expr0 "isnan(r) ? repl : r"
+  expr1 "isnan(g) ? repl : g"
+  expr2 "isnan(b) ? repl : b"
+  expr3 "isnan(a) ? repl : a"
+  name Expression2
+  gl_color 0x3242ff00
+  note_font 微软雅黑
+  selected true
+  xpos 180
+  ypos -83
+ }
+set Nca67fc00 [stack 0]
+ ShuffleCopy {
+  inputs 2
+  alpha alpha2
+  out {{{parent.Shuffle2.in}}}
+  name ShuffleCopy1
+  gl_color 0x6e32ff00
+  note_font 微软雅黑
+  xpos 70
+  ypos -59
+ }
+ Output {
+  name Output1
+  gl_color 0xff5a3200
+  xpos 70
+  ypos -10
+ }
+push $Nca67fc00
+ Viewer {
+  frame_range 1-66
+  fps 25
+  input_process false
+  name Viewer1
+  gl_color 0x32fffd00
+  note_font 微软雅黑
+  xpos 290
+  ypos -79
+ }
+end_group

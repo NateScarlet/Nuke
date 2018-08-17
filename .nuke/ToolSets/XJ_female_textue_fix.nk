@@ -1,0 +1,86 @@
+set cut_paste_input [stack 0]
+version 10.5 v7
+push $cut_paste_input
+Dot {
+ name Dot4
+ gl_color 0x32a9ff00
+ note_font 微软雅黑
+ selected true
+ xpos 2736
+ ypos -4290
+}
+set N946f4400 [stack 0]
+add_layer {DiffuseFilter DiffuseFilter.red DiffuseFilter.green DiffuseFilter.blue DiffuseFilter.alpha}
+ColorKeyer {
+ name ColorKeyer1
+ gl_color 0xff325b00
+ label "\n"
+ note_font 微软雅黑
+ selected true
+ xpos 2796
+ ypos -4268
+ input DiffuseFilter
+ color {0.05061255395 0.05061255395 0.05061255395 1}
+ threshold 0.005
+ output rgba.alpha
+}
+Median {
+ channels alpha
+ ignore_top_line false
+ name Median4
+ gl_color 0xfff93200
+ note_font 微软雅黑
+ selected true
+ xpos 2796
+ ypos -4220
+}
+push $N946f4400
+Grade {
+ inputs 1+1
+ channels DiffuseFilter
+ whitepoint {0.05036692321 0.05036692321 0.05036692321 0.9953439832}
+ white {0.6280924082 0.6609049439 0.699316442 1}
+ name Grade8
+ gl_color 0xff493200
+ note_font 微软雅黑
+ selected true
+ xpos 2702
+ ypos -4172
+}
+set N989e4400 [stack 0]
+ColorKeyer {
+ name ColorKeyer3
+ gl_color 0xff325b00
+ label "\n"
+ note_font 微软雅黑
+ selected true
+ xpos 2792
+ ypos -4124
+ input DiffuseFilter
+ color {0.2633993924 0.2765812278 0.2923254669 0.5531713963}
+ threshold 0.011
+ output rgba.alpha
+}
+Median {
+ channels alpha
+ ignore_top_line false
+ name Median3
+ gl_color 0xfff93200
+ note_font 微软雅黑
+ selected true
+ xpos 2792
+ ypos -4076
+}
+push $N989e4400
+Grade {
+ inputs 1+1
+ channels DiffuseFilter
+ whitepoint {0.2599055767 0.2728822231 0.2884212136 1}
+ white {0.6280924082 0.6609049439 0.699316442 1}
+ name Grade10
+ gl_color 0xff493200
+ note_font 微软雅黑
+ selected true
+ xpos 2702
+ ypos -4028
+}

@@ -1,0 +1,81 @@
+set cut_paste_input [stack 0]
+version 10.5 v7
+push $cut_paste_input
+Unpremult {
+name Unpremult2
+gl_color 0x89ff3200
+note_font 微软雅黑
+selected true
+xpos 2913
+ypos -1597
+}
+ColorCorrect {
+name ColorCorrect3
+gl_color 0x6532ff00
+note_font 微软雅黑
+selected true
+xpos 2913
+ypos -1565
+}
+RolloffContrast {
+channels rgb
+contrast 2
+center 0.001
+soft_clip 1
+slope_mag_low1 0.1999999881
+slope_mag_high2 0.1999999881
+name RolloffContrast3
+gl_color 0x32ff5900
+note_font 微软雅黑
+selected true
+xpos 2913
+ypos -1533
+}
+add_layer {SSS SSS.red SSS.green SSS.blue SSS.alpha}
+ColorCorrect {
+maskChannelInput SSS.alpha
+name ColorCorrect7
+gl_color 0xff32e200
+note_font 微软雅黑
+selected true
+xpos 2913
+ypos -1501
+}
+RolloffContrast {
+channels rgb
+contrast 2
+center 0.001
+soft_clip 1
+maskChannelInput SSS.alpha
+name RolloffContrast5
+gl_color 0x32ffc600
+note_font 微软雅黑
+selected true
+xpos 2913
+ypos -1453
+}
+Grade {
+name Grade14
+gl_color 0x32ff8e00
+note_font 微软雅黑
+selected true
+xpos 2913
+ypos -1405
+}
+Grade {
+maskChannelInput SSS.alpha
+name Grade15
+gl_color 0x3332ff00
+note_font 微软雅黑
+selected true
+xpos 2913
+ypos -1373
+}
+Premult {
+name Premult5
+gl_color 0x62ff3200
+note_font 微软雅黑
+selected true
+xpos 2913
+ypos -1325
+}

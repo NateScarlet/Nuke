@@ -1,0 +1,44 @@
+set cut_paste_input [stack 0]
+version 10.0 v4
+push $cut_paste_input
+Dot {
+ name Dot6
+ gl_color 0xaeff3200
+ note_font 微软雅黑
+ selected true
+ xpos 53
+ ypos -4119
+}
+set N29335c00 [stack 0]
+add_layer {P P.red P.green P.blue}
+PositionKeyer {
+ name PositionKeyer7
+ gl_color 0xff32c800
+ note_font 微软雅黑
+ selected true
+ xpos 151
+ ypos -4094
+ in P
+ sampler 1
+ p0 {1320 419}
+ p1 {1514 352}
+ blackpoint {31.109375 0.1 -216.5}
+ whitepoint {19.640625 0 -201.375}
+ x false
+ y true
+ output rgba.alpha
+ g_presets 1
+ __initiated true
+}
+push $N29335c00
+add_layer {mask_extra mask_extra.ground}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 mask_extra.ground
+ name Copy2
+ gl_color 0x32ffd600
+ selected true
+ xpos 25
+ ypos -4042
+}

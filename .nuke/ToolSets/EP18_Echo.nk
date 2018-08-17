@@ -1,0 +1,202 @@
+set cut_paste_input [stack 0]
+version 10.0 v4
+push $cut_paste_input
+Group {
+ name EP18残影
+ gl_color 0xa5ff3200
+ note_font 微软雅黑
+ selected true
+ xpos -350
+ ypos -260
+}
+ Input {
+  inputs 0
+  name Input
+  gl_color 0x57ff3200
+  selected true
+  xpos 396
+  ypos 294
+ }
+ ColorCorrect {
+  gain {3 0.6310908794 0 1}
+  midtones.gain 1.62
+  name ColorCorrect28
+  gl_color 0x3246ff00
+  note_font 微软雅黑
+  xpos 396
+  ypos 334
+ }
+ TimeEcho {
+  mode Average
+  framesbehind 6
+  frmaesfade 5
+  name TimeEcho1
+  gl_color 0xff32de00
+  note_font 微软雅黑
+  xpos 396
+  ypos 407
+ }
+ OFXcom.genarts.sapphire.time.s_timeaverage_v1 {
+  ave_over_frames 3
+  brightness 1
+  Enable_GPU true
+  version 8.1
+  version2 12737140
+  name S_TimeAverage1
+  gl_color 0x32ffb700
+  note_font 微软雅黑
+  xpos 396
+  ypos 478
+ }
+ OFXcom.genarts.sapphire.lighting.s_glow_v1 {
+  brightness 1
+  color 1
+  threshold 0
+  threshold_add_color 0
+  glow_width 26
+  width_x 1
+  width_y 1
+  width_red 1
+  width_green 1
+  width_blue 1
+  subpixel true
+  show Result
+  affect_alpha 0
+  glow_from_alpha 0
+  glow_under_source 0
+  light_background 0
+  source_opacity 1
+  combine Screen
+  edge_mode Reflect
+  bg_brightness 1
+  expand_borders false
+  invert_mask false
+  setKnobFlags {invert_mask +HIDDEN}
+  Atmosphere 1
+  atmosphere_amp 1.18
+  atmosphere_freq 3.6
+  atmosphere_detail 0.6
+  atmosphere_seed 0.123
+  atmosphere_speed 1
+  ShowGlowWidth true
+  Enable_GPU true
+  version 8.1
+  version2 1343771
+  name S_Glow1
+  gl_color 0xff32b100
+  note_font 微软雅黑
+  xpos 403
+  ypos 563
+ }
+set N36066400 [stack 0]
+ ColorCorrect {
+  midtones.contrast 1.12
+  midtones.gain 0.84
+  name ColorCorrect29
+  gl_color 0x7c32ff00
+  note_font 微软雅黑
+  xpos 256
+  ypos 563
+ }
+ OFXcom.genarts.sapphire.blursharpen.s_blurmotion_v1 {
+  Mode "Blur Color"
+  center {813.7495117 679.9996338}
+  from_z_dist 1
+  from_rotate 0
+  from_shift_x 0
+  from_shift_y 0
+  to_z_dist 0.95
+  to_rotate 0
+  to_shift_x 0
+  to_shift_y 0
+  exposure_bias 0.5
+  brightness 1
+  wrap_x No
+  wrap_y No
+  blur_res Full
+  subpixel true
+  blur_mask 0
+  setKnobFlags {blur_mask +HIDDEN}
+  invert_mask false
+  setKnobFlags {invert_mask +HIDDEN}
+  mask_use Luma
+  setKnobFlags {mask_use +HIDDEN}
+  "Crop Input" 1
+  crop_left 0
+  crop_right 0
+  crop_top 0
+  crop_bottom 0
+  ShowCenter true
+  ShowFromTransfm true
+  ShowToTransform true
+  ShowFromShift false
+  ShowToShift false
+  Enable_GPU true
+  version 8.1
+  version2 12424733
+  name S_BlurMotion1
+  gl_color 0x32ff4100
+  note_font 微软雅黑
+  xpos 266
+  ypos 613
+ }
+push $N36066400
+ VectorGenerator {
+  motionEstimation Regularized
+  matteChannel "Source Alpha"
+  name VectorGenerator2
+  gl_color 0xff32a800
+  note_font 微软雅黑
+  xpos 403
+  ypos 619
+ }
+ VectorBlur2 {
+  uv motion
+  scale 1
+  soft_lines true
+  name VectorBlur2_2
+  gl_color 0xd232ff00
+  note_font 微软雅黑
+  xpos 403
+  ypos 689
+ }
+ Merge2 {
+  inputs 2
+  operation screen
+  name Merge81
+  gl_color 0xff983200
+  note_font 微软雅黑
+  xpos 266
+  ypos 693
+ }
+ Crop {
+  box {0 0 1920 1080}
+  name Crop10
+  gl_color 0xffb13200
+  note_font 微软雅黑
+  xpos 100
+  ypos 695
+ }
+ OFXcom.revisionfx.rsmb_v3 {
+  menuTrackFrame "Previous Frame"
+  menuDisplay "Source Blurred"
+  MBAmount 0.5
+  MBSensitivity 70
+  valMBAmountFG1 0.5
+  valMBSensitivityFG1 70
+  menuFG1MatteChannel Alpha
+  valFG1InvMatteShrink 0
+  CustomData_DoNotEdit aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  name RSMB6
+  gl_color 0x324aff00
+  note_font 微软雅黑
+  xpos -187
+  ypos 695
+ }
+ Output {
+  name Output1
+  gl_color 0xc3ff3200
+  xpos -187
+  ypos 795
+ }
+end_group

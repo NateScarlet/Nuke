@@ -1,0 +1,12 @@
+[submodule "wlf"]
+	path = wlf
+	url = git@github.com:WuLiFang/Nuke.git
+[submodule "batchrender"]
+	path = batchrender
+	url = git@github.com:NateScarlet/NukeBatchRender.git
+[submodule "cryptomatte"]
+	path = cryptomatte
+	url = git@github.com:NateScarlet/Cryptomatte.git
+[submodule "tabtabtab"]
+	path = tabtabtab
+	url = git@github.com:NateScarlet/tabtabtab-nuke.git

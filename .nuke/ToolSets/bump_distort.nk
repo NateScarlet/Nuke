@@ -1,0 +1,97 @@
+set cut_paste_input [stack 0]
+version 10.5 v7
+push 0
+Dot {
+ name Dot4
+ gl_color 0x323eff00
+ note_font 微软雅黑
+ selected true
+ xpos 766
+ ypos -283
+}
+set N3b645800 [stack 0]
+add_layer {BumpNormals BumpNormals.red BumpNormals.green BumpNormals.blue BumpNormals.alpha}
+NormalKeyer {
+ name NormalKeyer1
+ label "输入通道: \[value in]"
+ note_font 微软雅黑
+ selected true
+ xpos 601
+ ypos -211
+ in BumpNormals
+ pos {-0.01815551892 1 0.003926970996}
+ rad {0.4 0.5 0.5}
+}
+push $N3b645800
+NormalKeyer {
+ name NormalKeyer2
+ label "输入通道: \[value in]"
+ note_font 微软雅黑
+ selected true
+ xpos 605
+ ypos -263
+ in BumpNormals
+ pos {0.008031791076 1 0.01434527803}
+ rad {0.4 0.5 0.5}
+}
+push $cut_paste_input
+Dot {
+ name Dot6
+ gl_color 0x32ff6400
+ note_font 微软雅黑
+ selected true
+ xpos 498
+ ypos -329
+}
+add_layer {distort distort.u distort.v}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 distort.u
+ name Copy2
+ gl_color 0xffb83200
+ note_font 微软雅黑
+ selected true
+ xpos 464
+ ypos -261
+}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 distort.v
+ name Copy3
+ gl_color 0xffb83200
+ note_font 微软雅黑
+ selected true
+ xpos 464
+ ypos -197
+}
+Grade {
+ channels distort
+ add -0.5
+ black_clamp false
+ name Grade1
+ gl_color 0x3268ff00
+ note_font 微软雅黑
+ selected true
+ xpos 464
+ ypos -153
+}
+IDistort {
+ uv distort
+ uv_scale 30
+ name IDistort1
+ gl_color 0xffb33200
+ note_font 微软雅黑
+ selected true
+ xpos 464
+ ypos -109
+}
+Dot {
+ name Dot2
+ gl_color 0xf732ff00
+ note_font 微软雅黑
+ selected true
+ xpos 498
+ ypos -27
+}

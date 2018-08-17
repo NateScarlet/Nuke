@@ -1,0 +1,57 @@
+set cut_paste_input [stack 0]
+version 10.5 v7
+push $cut_paste_input
+push $cut_paste_input
+add_layer {PuzzleMatte1 PuzzleMatte1.red PuzzleMatte1.green PuzzleMatte1.blue PuzzleMatte1.alpha}
+add_layer {plants plants.green_plant plants.purple_plant plants.white_plant plants.blue_plant plants.blue_grass plants.all plants.top}
+add_layer {PuzzleMatte2 PuzzleMatte2.red PuzzleMatte2.green PuzzleMatte2.blue PuzzleMatte2.alpha}
+Copy {
+inputs 2
+from0 PuzzleMatte1.red
+to0 plants.green_plant
+from1 PuzzleMatte1.green
+to1 plants.purple_plant
+from2 PuzzleMatte1.blue
+to2 plants.white_plant
+from3 PuzzleMatte2.green
+to3 plants.blue_plant
+name Copy1
+gl_color 0xff883200
+selected true
+xpos 0
+ypos -5054
+}
+set Nc299f400 [stack 0]
+push $Nc299f400
+Copy {
+inputs 2
+from0 PuzzleMatte2.blue
+to0 plants.blue_grass
+name Copy2
+gl_color 0xffa23200
+selected true
+xpos 0
+ypos -4972
+}
+set Nc299f800 [stack 0]
+push $Nc299f800
+Copy {
+inputs 2
+from0 PuzzleMatte2.red
+to0 plants.top
+name Copy3
+gl_color 0x32f7ff00
+selected true
+xpos 0
+ypos -4930
+}
+Expression {
+channel3 {none none none plants.all}
+expr3 "clamp(plants.green_plant + plants.purple_plant + plants.white_plant + plants.blue_plant + plants.blue_grass + plants.top)"
+name Expression1
+gl_color 0xff32eb00
+note_font 微软雅黑
+selected true
+xpos 0
+ypos -4888
+}

@@ -1,0 +1,35 @@
+set cut_paste_input [stack 0]
+version 10.5 v7
+push $cut_paste_input
+Dot {
+ name Dot12
+ gl_color 0x3278ff00
+ note_font 微软雅黑
+ selected true
+ xpos 798
+ ypos -1328
+}
+set N2a3bc400 [stack 0]
+Grade {
+ channels alpha
+ blackpoint 0.9
+ name Grade9
+ gl_color 0xff583200
+ note_font 微软雅黑
+ selected true
+ xpos 815
+ ypos -1296
+}
+push $N2a3bc400
+push 0
+Merge2 {
+ inputs 2+1
+ operation copy
+ also_merge all
+ name Merge21
+ gl_color 0xf232ff00
+ note_font 微软雅黑
+ selected true
+ xpos 686
+ ypos -1261
+}
