@@ -1,0 +1,56 @@
+set cut_paste_input [stack 0]
+version 10.5 v7
+push 0
+Dot {
+ name Dot11
+ gl_color 0x32ff4d00
+ note_font 微软雅黑
+ selected true
+ xpos 106
+ ypos -2372
+}
+set N9c4c3400 [stack 0]
+Grade {
+ channels alpha
+ blackpoint 0.99
+ name Grade19
+ gl_color 0xc0ff3200
+ note_font 微软雅黑
+ selected true
+ xpos 152
+ ypos -2328
+}
+push $N9c4c3400
+Remove {
+ channels rgba
+ name Remove2
+ gl_color 0x7c32ff00
+ note_font 微软雅黑
+ selected true
+ xpos 67
+ ypos -2344
+}
+push $cut_paste_input
+Dot {
+ name Dot6
+ gl_color 0xe0ff3200
+ note_font 微软雅黑
+ selected true
+ xpos 35
+ ypos -2376
+}
+Merge2 {
+ inputs 2+1
+ operation copy
+ Achannels none
+ Bchannels none
+ output none
+ also_merge all
+ name Merge8
+ gl_color 0x32ffa700
+ label 合并其他图层
+ note_font 微软雅黑
+ selected true
+ xpos 12
+ ypos -2309
+}
