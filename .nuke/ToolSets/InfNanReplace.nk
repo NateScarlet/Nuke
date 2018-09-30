@@ -1,14 +1,15 @@
 set cut_paste_input [stack 0]
 version 10.5 v7
 push $cut_paste_input
+add_layer {P P.red P.green P.blue}
 Group {
- name InfNanReplace
+ name InfNanReplace6
  gl_color 0xeaff3200
  note_font 微软雅黑
  selected true
- xpos 1428
- ypos -1271
- addUserKnob {20 tab l "InfNanReplace v0.1.1"}
+ xpos 3094
+ ypos -10955
+ addUserKnob {20 tab l "InfNanReplace v0.1.2"}
  addUserKnob {41 in l "in 1" T Shuffle2.in}
  addUserKnob {7 nan R -1e+008 0}
  addUserKnob {7 inf R 1 1e+008}
@@ -21,9 +22,9 @@ Group {
   xpos 70
   ypos -202
  }
-set N2d024800 [stack 0]
-push $N2d024800
+set Nb5c78c00 [stack 0]
  Shuffle {
+  in P
   name Shuffle2
   gl_color 0x32c7ff00
   note_font 微软雅黑
@@ -53,18 +54,20 @@ push $N2d024800
   name Expression2
   gl_color 0x3242ff00
   note_font 微软雅黑
-  selected true
   xpos 180
   ypos -83
  }
-set Nca67fc00 [stack 0]
+push $Nb5c78c00
  ShuffleCopy {
   inputs 2
-  alpha alpha2
+  red red
+  green green
+  blue blue
   out {{{parent.Shuffle2.in}}}
   name ShuffleCopy1
   gl_color 0x6e32ff00
   note_font 微软雅黑
+  selected true
   xpos 70
   ypos -59
  }
@@ -73,16 +76,5 @@ set Nca67fc00 [stack 0]
   gl_color 0xff5a3200
   xpos 70
   ypos -10
- }
-push $Nca67fc00
- Viewer {
-  frame_range 1-66
-  fps 25
-  input_process false
-  name Viewer1
-  gl_color 0x32fffd00
-  note_font 微软雅黑
-  xpos 290
-  ypos -79
  }
 end_group
