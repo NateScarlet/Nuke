@@ -22,6 +22,8 @@ def _main():
     config.read([os.path.join(__dirname__, 'config.ini')])
 
     def _set_env(key, value):
+        if os.getenv(key) == value:
+            return
         if sys.platform == 'win32':
             subprocess.call(['setx', key, value])
         os.environ[key] = value
