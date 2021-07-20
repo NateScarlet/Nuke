@@ -10,10 +10,7 @@ def _main():
     import os
     import subprocess
     import sys
-    try:
-        import configparser
-    except ImportError:
-        import ConfigParser as configparser
+    from six.moves import configparser
 
     __dirname__ = os.path.abspath(os.path.dirname(__file__))
 
