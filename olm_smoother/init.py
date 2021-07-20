@@ -10,8 +10,8 @@ NUKE_VERSION = nuke.env['NukeVersionMajor'] + \
 
 def _folder():
     paths = {
-        'win32': 'Plugins/Win/',
-        'cygwin': 'Plugins/Win/',
+        'win32': 'Plugins/Windows/',
+        'cygwin': 'Plugins/Windows/',
         'linux': 'Plugins/Linux/',
         'darwin': 'Plugins/Mac/'
     }
